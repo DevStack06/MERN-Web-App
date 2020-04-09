@@ -2,7 +2,7 @@ const express = require("express");
 const User = require("../../model/user/user.model");
 let jwt = require("jsonwebtoken");
 let config = require("../../config");
-
+let middleware = require("../../middleware");
 const router = express.Router();
 
 router.route("/").get((req, res) => {
@@ -58,18 +58,20 @@ router.route("/register").post(async (req, res) => {
     .catch((err) => res.status(400).json({ Error: err }));
 });
 
-router.route("/delete/:username").delete(async (req, res) => {
-  await User.findOneAndRemove(req.params.username, (err, user) => {
-    if (err) return res.status(500).send(err);
-    const response = {
-      message: "User successfully deleted",
-      username: user.username,
-    };
-    return res.status(200).send(response);
+router
+  .route("/delete/:username")
+  .delete(middleware.checkToken, async (req, res) => {
+    await User.findOneAndRemove(req.params.username, (err, user) => {
+      if (err) return res.status(500).send(err);
+      const response = {
+        message: "User successfully deleted",
+        username: user.username,
+      };
+      return res.status(200).send(response);
+    });
+    // console.log(req.params.username);
+    //example http://localhost:5000/user/delete/ram1233
   });
-  // console.log(req.params.username);
-  //example http://localhost:5000/user/delete/ram1233
-});
 
 router.route("/update/:username").patch(async (req, res) => {
   await User.findOneAndUpdate(
