@@ -6,38 +6,39 @@ const Profile = Schema(
     username: {
       type: String,
       minlength: 3,
-      require: true,
+      required: true,
       unique: true,
     },
     name: {
       type: String,
       minlength: 3,
-      require: true,
+      required: true,
     },
     profession: {
       type: String,
-      minlength: 3,
+      default: "",
     },
     interest: {
       type: String,
-      minlength: 3,
+      default: "",
     },
     DOB: {
-      type: Date,
+      type: String,
       minlength: 3,
-      require: true,
+      required: true,
     },
     titleline: {
       type: String,
-      minlength: 3,
+      default: "",
     },
     about: {
       type: String,
       minlength: 3,
-      require: true,
+      required: true,
     },
     img: {
       type: String,
+      required: true,
     },
   },
   { timestamps: true }
