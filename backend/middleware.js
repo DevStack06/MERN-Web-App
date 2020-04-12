@@ -16,9 +16,6 @@ let checkToken = (req, res, next) => {
           message: "Token is not valid",
         });
       } else {
-        var userId = decoded.id;
-        const val = decoded;
-        // console.log(val);
         req.decoded = decoded;
         next();
       }

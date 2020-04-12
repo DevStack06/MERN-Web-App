@@ -38,7 +38,7 @@ const Profile = Schema(
     },
     img: {
       type: String,
-      required: true,
+      default: "",
     },
   },
   { timestamps: true }

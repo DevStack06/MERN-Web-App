@@ -3,6 +3,7 @@ const Profile = require("../../model/profile.model");
 let middleware = require("../../middleware");
 const router = express.Router();
 const multer = require("multer");
+var path = require("path");
 
 //multer configuration
 const storage = multer.diskStorage({
@@ -10,7 +11,8 @@ const storage = multer.diskStorage({
     cb(null, "./uploads");
   },
   filename: (req, file, cb) => {
-    cb(null, new Date().toISOString() + file.originalname);
+    // cb(null, req.decoded.username + path.extname(file.originalname));
+    cb(null, req.decoded.username + ".jpg");
   },
 });
 
@@ -39,6 +41,7 @@ router.route("/all").get(async (req, res) => {
   });
 });
 
+//getting a single user data
 router.route("/").get(middleware.checkToken, async (req, res) => {
   await Profile.findOne({ username: req.decoded.username }, (err, profile) => {
     if (err) {
@@ -49,27 +52,50 @@ router.route("/").get(middleware.checkToken, async (req, res) => {
   });
 });
 
+//adding a new user profile data
+router.route("/add/").post(middleware.checkToken, async (req, res) => {
+  const profile = new Profile({
+    username: req.decoded.username,
+    name: req.body.name,
+    profession: req.body.profession,
+    interest: req.body.interest,
+    DOB: req.body.DOB,
+    titleline: req.body.titleline,
+    about: req.body.about,
+    img: req.file.path,
+  });
+  profile
+    .save()
+    .then(() =>
+      res.json({ Message: "Profile added successfully !", data: profile })
+    )
+    .catch((err) => res.status(400).json({ Error: err }));
+});
+
+//adding and update profile image
 router
-  .route("/add/")
-  .post(middleware.checkToken, upload.single("img"), async (req, res) => {
-    const profile = new Profile({
-      username: req.decoded.username,
-      name: req.body.name,
-      profession: req.body.profession,
-      interest: req.body.interest,
-      DOB: req.body.DOB,
-      titleline: req.body.titleline,
-      about: req.body.about,
-      img: req.file.path,
-    });
-    profile
-      .save()
-      .then(() =>
-        res.json({ Message: "Profile added successfully !", data: profile })
-      )
-      .catch((err) => res.status(400).json({ Error: err }));
+  .route("/add/image")
+  .patch(middleware.checkToken, upload.single("img"), async (req, res) => {
+    await Profile.findOneAndUpdate(
+      { username: req.decoded.username },
+      {
+        $set: {
+          img: req.file.path,
+        },
+      },
+      { new: true },
+      (err, user) => {
+        if (err) return res.status(500).send(err);
+        const response = {
+          message: "image added successfully updated",
+          data: user,
+        };
+        return res.status(200).send(response);
+      }
+    );
   });
 
+//updating the profile data
 router.route("/update/").patch(middleware.checkToken, async (req, res) => {
   let profile = {};
   await Profile.findOne({ username: req.decoded.username }, (err, result) => {
@@ -109,6 +135,7 @@ router.route("/update/").patch(middleware.checkToken, async (req, res) => {
   );
 });
 
+//deleteing the profile data
 router.route("/delete/").delete(middleware.checkToken, async (req, res) => {
   await Profile.findOneAndRemove(
     { username: req.decoded.username },
