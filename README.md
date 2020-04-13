@@ -12,7 +12,7 @@
 
 > $ npm start
 
-3.It will launch the website on [http://localhost:3000](htttp://localhost:3000) this url.
+3.It will launch the website on [http://localhost:3000](http://localhost:3000) this url.
 
 _Note :Currently working on this project so not fully developed._
 
