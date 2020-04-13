@@ -28,7 +28,7 @@ Inside the backend folder all the backend code are available . For executing the
 
 > $ npm run dev
 
-3>It will launch the server on the [http://localhost:5000](http://localhost:5000) this url.
+3>It will launch the server on  [http://localhost:5000](http://localhost:5000) this url.
 
 _Note -: Make sure you are inside the backend directory_
 
