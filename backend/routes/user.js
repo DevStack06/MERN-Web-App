@@ -1,8 +1,8 @@
 const express = require("express");
-const User = require("../../model/user.model");
+const User = require("../model/user.model");
 let jwt = require("jsonwebtoken");
-let config = require("../../config");
-let middleware = require("../../middleware");
+let config = require("../config");
+let middleware = require("../middleware");
 const router = express.Router();
 
 router.route("/all").get((req, res) => {
