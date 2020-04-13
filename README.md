@@ -1,4 +1,4 @@
-## I am new developer on MERN stack ,this is my first project on this stack .Sole purpose of this project to explore and get a idea about the MERN stack
+### I am new developer on MERN stack ,this is my first project on this stack .Sole purpose of this project to explore and get a idea about the MERN stack
 
 ### This repository consist both backend and front end code
 
@@ -27,6 +27,8 @@ Inside the backend folder all the backend code are available . For executing the
 2.Start the server by using below code
 
 > $ npm run dev
+
+3>It will launch the server on the [http://localhost:5000](http://localhost:5000) this url.
 
 _Note -: Make sure you are inside the backend directory_
 
