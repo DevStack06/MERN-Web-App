@@ -1,8 +1,13 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-ObjectId = Schema.ObjectId;
+var ObjectId = Schema.ObjectId;
 const Post = Schema(
   {
+    _id: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     username: {
       type: String,
       required: true,
@@ -13,10 +18,9 @@ const Post = Schema(
       type: Number,
       default: 0,
     },
-    contet: {
+    content: {
       type: String,
       required: true,
-      unique: true,
       minlength: 10,
     },
     share: {

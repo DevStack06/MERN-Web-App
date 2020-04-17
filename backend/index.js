@@ -1,4 +1,3 @@
-let middleware = require("./middleware");
 const express = require("express");
 const app = express();
 
@@ -22,12 +21,14 @@ connection.once("open", () =>
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 //routes
-const userroute = require("./routes/user/user");
-const profileroute = require("./routes/profile/profile");
+const userroute = require("./routes/user");
+const profileroute = require("./routes/profile");
+const postroute = require("./routes/post");
 app.use("/user", userroute);
 app.use("/profile", profileroute);
+app.use("/post", postroute);
 //acknoledge api
-app.get("/", middleware.checkToken, (req, res) =>
+app.get("/", (req, res) =>
   res.json({ message: "Welcome you are in the main page :)" })
 );
 
