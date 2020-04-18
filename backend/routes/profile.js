@@ -124,11 +124,11 @@ router.route("/update/").patch(middleware.checkToken, async (req, res) => {
       },
     },
     { new: true },
-    (err, user) => {
+    (err, profile) => {
       if (err) return res.status(500).send(err);
       const response = {
         message: "Profile successfully updated",
-        data: user,
+        data: profile,
       };
       return res.status(200).send(response);
     }
@@ -139,11 +139,11 @@ router.route("/update/").patch(middleware.checkToken, async (req, res) => {
 router.route("/delete/").delete(middleware.checkToken, async (req, res) => {
   await Profile.findOneAndRemove(
     { username: req.decoded.username },
-    (err, user) => {
+    (err, profile) => {
       if (err) return res.status(500).send(err);
       const response = {
         message: "User successfully deleted",
-        username: user.username,
+        username: profile.username,
       };
       return res.status(200).send(response);
     }
