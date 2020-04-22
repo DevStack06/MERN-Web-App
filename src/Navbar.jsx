@@ -1,26 +1,17 @@
 import React, { Component } from "react";
-
+import "./Navbar.css";
 class Navbar extends Component {
   state = {};
   render() {
     return (
       <React.Fragment>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav
+          class="navbar navbar-expand-lg navbar-light"
+          style={{ backgroundColor: "#e3f2fd" }}
+        >
           <a class="navbar-brand" href="#">
-            BlogApp
+            FrenzoApp
           </a>
-          {/* <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon">helo</span>
-          </button> */}
-
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item active">
@@ -47,24 +38,80 @@ class Navbar extends Component {
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  Profile
+                  Add Blog
                 </a>
               </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
+
+              <form class="form-inline my-2 my-lg-0 ">
+                <i class="fa fa-search" id="icon"></i>
+                <input
+                  class="form-control mr-sm-2"
+                  type="search"
+                  placeholder="Search blogs"
+                  aria-label="Search"
+                />
+              </form>
+
+              <ul class="navbar-nav mr-auto mr-sm-2">
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Hi
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/userlogout">
+                      Logout
+                    </a>
+                    <a class="dropdown-item" href="/faqs">
+                      FAQS
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/work/notifications">
+                      Notifications
+                    </a>
+                  </div>
+                </li>
+              </ul>
+
               <button
-                class="btn btn-outline-success my-2 my-sm-0"
-                type="submit"
+                type="button"
+                class="btn btn-outline-success my-2 my-sm-0 ml-2"
+                data-toggle="modal"
+                data-target="#Signup"
               >
-                Search
+                <svg
+                  class="bi bi-person-fill"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                Signup
               </button>
-            </form>
+
+              <button
+                type="button"
+                class="btn btn-outline-success my-2 my-sm-0 mx-2"
+                data-toggle="modal"
+                data-target="#login"
+              >
+                Login
+              </button>
+            </ul>
           </div>
         </nav>
       </React.Fragment>

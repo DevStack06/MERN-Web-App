@@ -1,0 +1,22 @@
+.navbar {
+  padding: 0.5rem 7rem !important;
+}
+
+.mr-sm-2,
+.mx-sm-2 {
+  margin-left: 1.5rem !important;
+  margin-right: 1.5rem !important;
+}
+.form-inline .form-control {
+  width: 17rem !important;
+}
+
+.form-control {
+  padding: 0.375rem 2.3rem !important;
+}
+
+#icon {
+  padding-left: 2.3rem;
+  position: absolute;
+  color: #495057;
+}
