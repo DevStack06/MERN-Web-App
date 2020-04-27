@@ -1,49 +1,46 @@
 import React, { Component } from "react";
 import "./Navbar.css";
-import User from "./componants/user/user";
+import { NavLink } from "react-router-dom";
 class Navbar extends Component {
   state = {
     authenticated: false,
     signup: false,
   };
 
-  onSignUp = () => {
-    this.setState({
-      signup: !this.state.signup,
-    });
-  };
   render() {
-    console.log(this.state.authenticated);
     let userUI = (
       <div>
-        <button
-          type="button"
-          className="btn btn-outline-success my-2 my-sm-0 ml-2"
-          onClick={this.onSignUp}
-        >
-          <svg
-            className="bi bi-person-fill"
-            width="1em"
-            height="1em"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            xmlns="http://www.w3.org/2000/svg"
+        <NavLink to="/signup">
+          <button
+            type="button"
+            className="btn btn-outline-success my-2 my-sm-0 ml-2"
+            onClick={this.onSignUp}
           >
-            <path
-              fill-rule="evenodd"
-              d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z"
-              clip-rule="evenodd"
-            />
-          </svg>
-          Signup
-        </button>
-
-        <button
-          type="button"
-          className="btn btn-outline-success my-2 my-sm-0 mx-2"
-        >
-          Login
-        </button>
+            {/* <svg
+              className="bi bi-person-fill"
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z"
+                clip-rule="evenodd"
+              />
+            </svg> */}
+            Signup
+          </button>
+        </NavLink>
+        <NavLink to="/signin">
+          <button
+            type="button"
+            className="btn btn-outline-success my-2 my-sm-0 mx-2"
+          >
+            Login
+          </button>
+        </NavLink>
       </div>
     );
 
@@ -54,7 +51,7 @@ class Navbar extends Component {
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
-                href="#"
+                href="/"
                 id="navbarDropdown"
                 role="button"
                 data-toggle="dropdown"
@@ -86,35 +83,35 @@ class Navbar extends Component {
           className="navbar navbar-expand-lg navbar-light"
           style={{ backgroundColor: "#e3f2fd" }}
         >
-          <a className="navbar-brand" href="#">
+          <NavLink className="navbar-brand" to="/" exact>
             FrenzoApp
-          </a>
+          </NavLink>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <a className="nav-link" href="#">
+                <NavLink className="nav-link" to="/" exact>
                   Home <span className="sr-only">(current)</span>
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/">
                   My Blog
                 </a>
               </li>
 
               <li className="nav-item">
-                <a className="nav-link disabled" href="#">
+                <a className="nav-link disabled" href="/">
                   Advance
                 </a>
               </li>
 
               <li className="nav-item">
-                <a className="nav-link disabled" href="#">
+                <a className="nav-link disabled" href="/">
                   Notifications
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/">
                   Add Blog
                 </a>
               </li>
@@ -132,7 +129,6 @@ class Navbar extends Component {
             </ul>
           </div>
         </nav>
-        {this.state.signup ? <User togglePopup={this.onSignUp} /> : null}
       </React.Fragment>
     );
   }

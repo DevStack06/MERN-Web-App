@@ -1,26 +1,20 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Navbar from "./Navbar";
-import User from "./componants/user/user";
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <Navbar />
-//     </div>
-//   );
-// }
-
-// export default App;
+import HomeBuilder from "./Container/HomeBuilder/HomeBuilder";
+import UserBuilder from "./Container/UserBuilder/UserBuilder";
+import Layout from "./Hoc/Layout/Layout";
+import { Route, Switch } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="navbardiv">
-          <Navbar />
-        </div>
+      <div>
+        <Layout>
+          <Switch>
+            <Route path="/signin" component={UserBuilder} />
+            <Route path="/signup" component={UserBuilder} />
+            <Route path="/" exact component={HomeBuilder} />
+          </Switch>
+        </Layout>
       </div>
     );
   }
