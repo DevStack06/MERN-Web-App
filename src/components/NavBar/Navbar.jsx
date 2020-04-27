@@ -10,37 +10,21 @@ class Navbar extends Component {
   render() {
     let userUI = (
       <div>
-        <NavLink to="/signup">
-          <button
-            type="button"
-            className="btn btn-outline-success my-2 my-sm-0 ml-2"
-            onClick={this.onSignUp}
-          >
-            {/* <svg
-              className="bi bi-person-fill"
-              width="1em"
-              height="1em"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z"
-                clip-rule="evenodd"
-              />
-            </svg> */}
-            Signup
-          </button>
-        </NavLink>
-        <NavLink to="/signin">
-          <button
-            type="button"
-            className="btn btn-outline-success my-2 my-sm-0 mx-2"
-          >
-            Login
-          </button>
-        </NavLink>
+        <button
+          type="button"
+          className="btn btn-outline-success my-2 my-sm-0 ml-2"
+          onClick={this.props.SignUp}
+        >
+          Signup
+        </button>
+
+        <button
+          type="button"
+          className="btn btn-outline-success my-2 my-sm-0 mx-2"
+          onClick={this.props.SignIn}
+        >
+          Login
+        </button>
       </div>
     );
 

@@ -1,18 +1,26 @@
 import React, { Component } from "react";
 
-class AppBuilder extends Component {
+class UserBuilder extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      popup: true,
+    };
   }
+  popUpCancelHandler = () => {
+    this.setState({
+      popup: false,
+    });
+  };
   render() {
-    console.log(this.props);
     return (
       <React.Fragment>
-        <h1>Welcome to signin/signup page </h1>
+        <Modal show={this.state.popup} modalClosed={this.popUpCancelHandler}>
+          {page}
+        </Modal>
       </React.Fragment>
     );
   }
 }
 
-export default AppBuilder;
+export default UserBuilder;

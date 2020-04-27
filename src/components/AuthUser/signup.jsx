@@ -1,6 +1,6 @@
 import React from "react";
 
-const login = () => {
+const signup = () => {
   return (
     <React.Fragment>
       <form>
@@ -10,6 +10,10 @@ const login = () => {
         </div>
         <div class="form-group">
           <label for="pwd">Password:</label>
+          <input type="password" class="form-control" id="pwd" />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Confirm Password:</label>
           <input type="password" class="form-control" id="pwd" />
         </div>
         <div class="checkbox">
@@ -25,4 +29,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default signup;
