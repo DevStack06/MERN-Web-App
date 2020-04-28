@@ -1,26 +1,24 @@
-import React, { Component } from "react";
-
-class UserBuilder extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      popup: true,
-    };
-  }
-  popUpCancelHandler = () => {
-    this.setState({
-      popup: false,
-    });
-  };
-  render() {
-    return (
-      <React.Fragment>
-        <Modal show={this.state.popup} modalClosed={this.popUpCancelHandler}>
-          {page}
-        </Modal>
-      </React.Fragment>
+import React from "react";
+import SignIn from "../../components/AuthUser/Login";
+import SignUp from "../../components/AuthUser/Signup";
+import Modal from "../../components/UI/Modal/Modal";
+const userBuilder = (props) => {
+  let page = null;
+  if (props.pageType === "signup" && props.pageShow) {
+    page = (
+      <Modal show={props.pageShow} modalClosed={props.popUpCancelHandler}>
+        <SignUp />
+      </Modal>
+    );
+  } else if (props.pageType === "signin" && props.pageShow) {
+    page = (
+      <Modal show={props.pageShow} modalClosed={props.popUpCancelHandler}>
+        <SignIn />
+      </Modal>
     );
   }
-}
 
-export default UserBuilder;
+  return <React.Fragment>{page} </React.Fragment>;
+};
+
+export default userBuilder;

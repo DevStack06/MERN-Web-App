@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import NavBar from "../../components/NavBar/Navbar";
 import classes from "./Layout.module.css";
-import SignIn from "../../components/AuthUser/login";
-import SignUp from "../../components/AuthUser/signup";
-import Modal from "../../components/UI/Modal/Modal";
+
+import UserBuilder from "../../Container/UserBuilder/UserBuilder";
+import AuthenticationWrapper from "../AuthenticationWrapper/AuthenticationWrapper";
 class Layout extends Component {
   state = {
     pageType: "",
@@ -11,7 +11,7 @@ class Layout extends Component {
   };
   signInbuttonClick = () => {
     this.setState({
-      pageType: "signIn",
+      pageType: "signin",
       pageShow: true,
     });
   };
@@ -28,23 +28,24 @@ class Layout extends Component {
     });
   };
   render() {
-    let page = <SignIn />;
-    if (this.state.pageType === "signup") {
-      page = <SignUp />;
-    }
+    // console.log(this.props);
     return (
       <React.Fragment>
         <NavBar
           SignIn={this.signInbuttonClick}
           SignUp={this.signUpbuttonClick}
+          authenticated={this.props.authenticated}
+          username={this.props.username}
         />
-        <Modal show={this.state.pageShow} modalClosed={this.popUpCancelHandler}>
-          {page}
-        </Modal>
+        <UserBuilder
+          pageShow={this.state.pageShow}
+          popUpCancelHandler={this.popUpCancelHandler}
+          pageType={this.state.pageType}
+        />
         <main className={classes.Content}>{this.props.children}</main>
       </React.Fragment>
     );
   }
 }
 
-export default Layout;
+export default AuthenticationWrapper(Layout);

@@ -18,6 +18,7 @@ router.route("/all").get((req, res) => {
 });
 
 router.route("/login").post(async (req, res) => {
+  console.log("you hit the login");
   await User.findOne(
     { $or: [{ username: req.body.username }, { email: req.body.username }] },
     (err, user) => {
@@ -49,6 +50,8 @@ router.route("/login").post(async (req, res) => {
 });
 
 router.route("/register").post(async (req, res) => {
+  console.log("you hit the register");
+  console.log(req.body);
   const user = new User({
     username: req.body.username,
     email: req.body.email,
@@ -56,25 +59,34 @@ router.route("/register").post(async (req, res) => {
   });
   await user
     .save()
-    .then(() => res.json(user))
-    .catch((err) => res.status(400).json({ Error: err }));
+    .then(() => {
+      console.log("helo");
+      res.json(user);
+    })
+    .catch((err) => {
+      console.log("helo");
+      console.log(err);
+      res.status(400).json({ Error: err });
+    });
 });
 
-router.route("/delete/").delete(middleware.checkToken, async (req, res) => {
-  await User.findOneAndRemove(
-    { username: req.decoded.username },
-    (err, user) => {
-      if (err) return res.status(500).send(err);
-      const response = {
-        message: "User successfully deleted",
-        username: user.username,
-      };
-      return res.status(200).send(response);
-    }
-  );
-  // console.log(req.params.username);
-  //example http://localhost:5000/user/delete/ram1233
-});
+router
+  .route("/delete/:username")
+  .delete(middleware.checkToken, async (req, res) => {
+    await User.findOneAndRemove(
+      { username: req.params.username },
+      (err, user) => {
+        if (err) return res.status(500).send(err);
+        const response = {
+          message: "User successfully deleted",
+          username: user.username,
+        };
+        return res.status(200).send(response);
+      }
+    );
+    // console.log(req.params.username);
+    //example http://localhost:5000/user/delete/ram1233
+  });
 
 router.route("/update/:username").patch(async (req, res) => {
   await User.findOneAndUpdate(

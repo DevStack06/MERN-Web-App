@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import HomeBuilder from "./Container/HomeBuilder/HomeBuilder";
-// import UserBuilder from "./Container/UserBuilder/UserBuilder";
 import Layout from "./Hoc/Layout/Layout";
 import { Route, Switch } from "react-router-dom";
 

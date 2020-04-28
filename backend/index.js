@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
 const PORT = process.env.Port || 5000;
 
@@ -20,6 +21,7 @@ connection.once("open", () =>
 //middleware
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
+app.use(cors());
 //routes
 const userroute = require("./routes/user");
 const profileroute = require("./routes/profile");
@@ -32,6 +34,6 @@ app.get("/", (req, res) =>
   res.json({ message: "Welcome you are in the main page :)" })
 );
 
-app.listen(PORT, () =>
+app.listen(PORT, "0.0.0.0", () =>
   console.log(`your app is running on port ${PORT} enjoy developing`)
 );
