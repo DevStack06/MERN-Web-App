@@ -5,6 +5,7 @@ class Login extends Component {
     username: "",
     password: "",
     err: "",
+    remember: false,
   };
 
   onChangeValue = (e) => {
@@ -12,7 +13,14 @@ class Login extends Component {
       [e.target.name]: e.target.value,
     });
   };
-
+  onClickCheckBox = () => {
+    // console.log("checkbox clicked" + this.state.remember);
+    let checVal = this.state.remember;
+    this.setState({
+      remember: !checVal,
+    });
+    // console.log("checkbox after clicked" + this.state.remember);
+  };
   SignIn = async (e) => {
     e.preventDefault();
 
@@ -24,8 +32,13 @@ class Login extends Component {
       .post("/user/login", loginData)
       .then((res) => {
         console.log(res.data);
-        localStorage.setItem("jwtToken", res.data.token);
-        localStorage.setItem("username", this.state.username);
+        if (this.state.remember) {
+          localStorage.setItem("jwtToken", res.data.token);
+          localStorage.setItem("username", this.state.username);
+        } else {
+          sessionStorage.setItem("jwtToken", res.data.token);
+          sessionStorage.setItem("username", this.state.username);
+        }
         window.location.reload();
       })
       .catch((err) => {
@@ -60,7 +73,8 @@ class Login extends Component {
           </div>
           <div className="checkbox">
             <label>
-              <input type="checkbox" /> Remember me
+              <input type="checkbox" onClick={this.onClickCheckBox} /> Remember
+              me
             </label>
           </div>
           <button className="btn btn-success" onClick={this.SignIn}>

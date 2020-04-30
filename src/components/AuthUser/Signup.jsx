@@ -7,8 +7,14 @@ class Signup extends Component {
     email: "",
     confirmPassword: "",
     errmsg: "",
+    remember: false,
   };
-
+  onClickCheckBox = () => {
+    let checVal = this.state.remember;
+    this.setState({
+      remember: !checVal,
+    });
+  };
   onChangeValue = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -46,8 +52,13 @@ class Signup extends Component {
             .post("/user/login", loginData)
             .then((res) => {
               // console.log(res.data);
-              localStorage.setItem("jwtToken", res.data.token);
-              localStorage.setItem("username", this.state.username);
+              if (this.state.remember) {
+                localStorage.setItem("jwtToken", res.data.token);
+                localStorage.setItem("username", this.state.username);
+              } else {
+                sessionStorage.setItem("jwtToken", res.data.token);
+                sessionStorage.setItem("username", this.state.username);
+              }
               window.location.reload();
             })
             .catch((err) => console.log(err));
@@ -101,7 +112,8 @@ class Signup extends Component {
           </div>
           <div className="checkbox">
             <label>
-              <input type="checkbox" /> Remember me
+              <input type="checkbox" onClick={this.onClickCheckBox} /> Remember
+              me
             </label>
           </div>
           <button className="btn btn-success" onClick={this.SignUp}>

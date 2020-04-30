@@ -101,7 +101,8 @@ const navbar = (props) => {
             <form className="form-inline my-2 my-lg-0 ">
               <i className="fa fa-search" id="icon"></i>
               <input
-                className="form-control mr-sm-2"
+                className="form-control mr-sm-2 "
+                id="form"
                 type="search"
                 placeholder="Search blogs"
                 aria-label="Search"
