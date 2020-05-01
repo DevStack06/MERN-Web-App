@@ -1,6 +1,6 @@
-### Hello geeks ,I am new on the MERN stack so what I am learning during this lockdown period that I am uploading here .Anyone can take help from this reposiory and also suggest the modification .I am also new in term of writing the readme file so pardon me :smile: .
+### Hello geeks ,I'm new to the MERN stack,so whatever I'm learning during this lockdown period, is being uploaded by me over here. Anyone can take help from this repository and also suggest the required modifications .I am also new in terms of writing the readme file, so pardon me :smile: .
 
-### This repository consist both backend and front end codes
+### This repository consists of both backend and front end codes
 
 Before going to code make sure to install mongoDB database on your local system :sweat_smile: .For installing mongoDB you can take help from the [Official mongoDB Ibsite](https://docs.mongodb.com/manual/installation/) .For this project I am using the [Mongoose](https://mongoosejs.com/).
 
@@ -13,18 +13,18 @@ Below are the some basic code for your help after installing the mongoDB.
 - For restarting the server
   > sudo service mongod restart
 
-**Note -:Above codes are valid for linux only.For more info you can follow the official mongoDB website or else just google it :wink:**
+**Note -:Above codes are valid for linux only.For more info, you can follow the official mongoDB website or just google it out :wink:**
 
 ## **Back End Code**
 
-Inside the backend folder all the backend code are available . This is the folder structure of backend code-:
+Inside the backend folder all the backend codes are available . This is the folder structure of backend code-:
 
 - model
   - All Mongoose model schemas
 - routes
   - All end points codes are here(routes folder)
 - uploads
-  - After uploading any profile picture the image will store on this folder
+  - After uploading any profile picture the image will be stored in this folder
 - index.js file (main Source file)
 - middleware.js (middleware for token validation)
 - config.js(helper function for middleware.js file)
@@ -37,7 +37,7 @@ app.listen(PORT, "0.0.0.0", () =>
 );
 ```
 
-**However if you want to run the server on localhost just replace above code with the following code**
+**However if you want to run the server on localhost just replace the above code with the following code**
 
 ```javascript
 app.listen(PORT, () =>
@@ -47,15 +47,15 @@ app.listen(PORT, () =>
 
 For executing the backend server you have to execute the following codes-:
 
-1. For installing the all necessary npm packages-
+1. For installing all the necessary npm packages-
 
 > \$ npm install
 
-2. Right now app is connected to the local mongoDb databse .You must start the mongoDb server before running the backend server .
+2.Now,the app is connected to the local mongoDb databse .You must start the mongoDb server before running the backend server .
 
-   > sudo service mongod start
+> sudo service mongod start
 
-3. Below is the code of connecting the mongoDB with nodeJs (index.js file)-:
+3. Below given,is the code of connecting the mongoDB with nodeJs (index.js file)-:
 
 ```javascript
 mongoose.connect("mongodb://localhost:27017/blogDB", {
@@ -76,7 +76,7 @@ mongoose.connect("mongodb://localhost:27017/blogDB", {
 
 ## **Front End Code (Not updated)**
 
-1.The main folder is a react project you can run it by cloning this and running the below codes on terminal for instaling the all npmm packages
+1.The main folder is a react project. You can run it by cloning this and, running the below codes on the terminal for installing all the npm packages
 
 > \$ npm install
 
@@ -86,6 +86,4 @@ mongoose.connect("mongodb://localhost:27017/blogDB", {
 
 3.It will launch the website on [http://localhost:3000](http://localhost:3000) this url.
 
-_Note :Currently working on this project so not fully developed._
-
-### _It is not fully developed yet_
+**Note :This isn't a fully developed project,since I'm working on this currently.**
