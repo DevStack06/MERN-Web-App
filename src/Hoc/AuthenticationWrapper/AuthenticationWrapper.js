@@ -9,9 +9,16 @@ const AuthenticationHandler = (WrappedComponent) => {
     };
 
     componentWillMount() {
-      let token = localStorage.getItem("jwtToken");
-      let username = localStorage.getItem("username");
-      // console.log(username);
+      let token = "";
+      let username = "";
+      if (sessionStorage.getItem("jwtToken") === null) {
+        token = localStorage.getItem("jwtToken");
+        username = localStorage.getItem("username");
+      } else {
+        token = sessionStorage.getItem("jwtToken");
+        username = sessionStorage.getItem("username");
+      }
+      console.log(token);
       if (!token || token === "") {
         return;
       } else {
@@ -24,6 +31,7 @@ const AuthenticationHandler = (WrappedComponent) => {
     }
 
     render() {
+      console.log(this.state.authenticated);
       return (
         <WrappedComponent
           {...this.props}

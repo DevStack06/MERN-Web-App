@@ -3,7 +3,10 @@ import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 const navbar = (props) => {
   const Logout = () => {
-    localStorage.removeItem("jwtToken");
+    // localStorage.removeItem("jwtToken");
+    // localStorage.removeItem("username");
+    localStorage.clear();
+    sessionStorage.clear();
   };
 
   let userUI = (
