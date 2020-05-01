@@ -6,11 +6,11 @@ Before going to code make sure to install mongoDB database on your local system 
 
 Below are the some basic code for your help after installing the mongoDB.
 
-- For start the server
+- For starting the server
   > sudo service mongod start
-- For stop the server
+- For stoping the server
   > sudo service mongod stop
-- For restart the server
+- For restarting the server
   > sudo service mongod restart
 
 **Note -:Above codes are valid for linux only.For more info you can follow the official mongoDB website or else just google it :wink:**
