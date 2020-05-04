@@ -44,10 +44,17 @@ router.route("/all").get(async (req, res) => {
 //getting a single user data
 router.route("/").get(middleware.checkToken, async (req, res) => {
   await Profile.findOne({ username: req.decoded.username }, (err, profile) => {
+    // console.log(profile);
     if (err) {
       res.status(400).json({ error: err });
+      console.log(err);
     } else {
-      res.json(profile);
+      if (profile === null) {
+        // console.log("here");
+        res.json([]);
+      } else {
+        res.json(profile);
+      }
     }
   });
 });

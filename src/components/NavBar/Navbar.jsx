@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 const navbar = (props) => {
   const Logout = () => {
     // localStorage.removeItem("jwtToken");
@@ -46,15 +46,15 @@ const navbar = (props) => {
               Hi {props.username}
             </a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a className="dropdown-item" href="/" onClick={Logout}>
-                Logout
-              </a>
-              <a className="dropdown-item" href="/faqs">
-                FAQS
-              </a>
+              <NavLink className="dropdown-item" to="/profile">
+                Go to Profile
+              </NavLink>
               <div className="dropdown-divider"></div>
               <a className="dropdown-item" href="/work/notifications">
-                Notifications
+                Delete Account
+              </a>
+              <a className="dropdown-item" href="/" onClick={Logout}>
+                Logout
               </a>
             </div>
           </li>
