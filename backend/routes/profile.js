@@ -44,16 +44,18 @@ router.route("/all").get(async (req, res) => {
 //getting a single user data
 router.route("/").get(middleware.checkToken, async (req, res) => {
   await Profile.findOne({ username: req.decoded.username }, (err, profile) => {
-    // console.log(profile);
+    console.log(profile);
     if (err) {
       res.status(400).json({ error: err });
       console.log(err);
     } else {
       if (profile === null) {
-        // console.log("here");
-        res.json([]);
+        console.log("here");
+        res.json();
       } else {
         res.json(profile);
+        // res.json([]);
+        console.log("here2");
       }
     }
   });
@@ -61,6 +63,7 @@ router.route("/").get(middleware.checkToken, async (req, res) => {
 
 //adding a new user profile data
 router.route("/add/").post(middleware.checkToken, async (req, res) => {
+  console.log("inside profile");
   const profile = new Profile({
     username: req.decoded.username,
     name: req.body.name,
@@ -69,9 +72,9 @@ router.route("/add/").post(middleware.checkToken, async (req, res) => {
     DOB: req.body.DOB,
     titleline: req.body.titleline,
     about: req.body.about,
-    img: req.file.path,
+    img: "",
   });
-  profile
+  await profile
     .save()
     .then(() =>
       res.json({ Message: "Profile added successfully !", data: profile })

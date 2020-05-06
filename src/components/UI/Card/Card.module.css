@@ -1,0 +1,17 @@
+.Card {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 83ms;
+  margin: 16px 0;
+  padding: 24px;
+  display: block;
+  background-color: #fff;
+  border-radius: 2px;
+  /* height: 20%; */
+  /* top: 10%; */
+  /* left: 10%; */
+  /* right: 10%; */
+  /* position: absolute; */
+  width: 100%;
+
+  /* position: absolute; */
+}

@@ -1,0 +1,54 @@
+.MiddlePart {
+  /* top: 10%; */
+  /* left: 10%; */
+  /* right: 10%; */
+  top: 10%;
+  left: 7%;
+  right: 26%;
+  width: 60%;
+  position: absolute;
+}
+
+.img {
+  /* position: relative; */
+  /* position: absolute; */
+  width: 100%;
+  /* padding-bottom: 25%; */
+  background: cover;
+  height: 180px;
+}
+
+/* profile-background-image--loading {
+  background: 50% / cover;
+}
+.profile-background-image {
+  position: relative;
+  width: 100%;
+  padding-bottom: 25%;
+} */
+
+.card {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 3px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 83ms;
+  background-color: #fff;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  overflow: visible;
+}
+.p5 {
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+}
+
+.ProfilePic {
+  margin-top: -90px;
+  margin-bottom: 5px;
+}
+
+.pic {
+  height: 150px;
+  width: 150px;
+}

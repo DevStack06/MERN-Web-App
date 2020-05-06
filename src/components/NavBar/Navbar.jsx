@@ -1,6 +1,8 @@
 import React from "react";
 import "./Navbar.css";
-import { NavLink, Link } from "react-router-dom";
+// import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 const navbar = (props) => {
   const Logout = () => {
     // localStorage.removeItem("jwtToken");
@@ -77,11 +79,6 @@ const navbar = (props) => {
               <NavLink className="nav-link" to="/" exact>
                 Home <span className="sr-only">(current)</span>
               </NavLink>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/">
-                My Blog
-              </a>
             </li>
 
             <li className="nav-item">

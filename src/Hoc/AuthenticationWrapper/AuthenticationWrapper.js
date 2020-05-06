@@ -2,13 +2,17 @@ import React, { Component } from "react";
 
 const AuthenticationHandler = (WrappedComponent) => {
   return class extends Component {
-    state = {
-      token: null,
-      authenticated: false,
-      username: "",
-    };
+    constructor(props) {
+      super(props);
+      this.state = {
+        token: null,
+        authenticated: false,
+        username: "",
+      };
+      // this.tokenCheck();
+    }
 
-    componentWillMount() {
+    componentDidMount() {
       let token = "";
       let username = "";
       if (sessionStorage.getItem("jwtToken") === null) {
@@ -18,7 +22,7 @@ const AuthenticationHandler = (WrappedComponent) => {
         token = sessionStorage.getItem("jwtToken");
         username = sessionStorage.getItem("username");
       }
-      console.log(token);
+      // console.log(token);
       if (!token || token === "") {
         return;
       } else {
@@ -31,7 +35,7 @@ const AuthenticationHandler = (WrappedComponent) => {
     }
 
     render() {
-      console.log(this.state.authenticated);
+      // console.log(this.state.authenticated);
       return (
         <WrappedComponent
           {...this.props}

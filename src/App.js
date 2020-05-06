@@ -11,6 +11,7 @@ class App extends Component {
           <Switch>
             {/* <Route path="/signin" component={UserBuilder} />*/}
             <Route path="/profile" component={ProfileBuilder} />
+            <Route path="/home" exact component={HomeBuilder} />
             <Route path="/" exact component={HomeBuilder} />
           </Switch>
         </Layout>
