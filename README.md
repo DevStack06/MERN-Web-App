@@ -1,4 +1,4 @@
-### Hello geeks ,I'm new to the MERN stack,so whatever I'm learning during this lockdown period, is being uploaded by me over here. Anyone can take help from this repository and also suggest the required modifications .I am also new in terms of writing the readme file, so pardon me :smile: .
+### Hello geeks ,I'm MERN Stack developer, who is making a simple blog web app. Anyone can take help from this repository and also suggest the required modifications .I am also new in terms of writing the readme file, so pardon me :smile: .
 
 ### This repository consists of both backend and front end codes
 
