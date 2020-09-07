@@ -11,10 +11,9 @@ const storage = multer.diskStorage({
     cb(null, "./uploads");
   },
   filename: (req, file, cb) => {
-    // cb(null, req.decoded.username + path.extname(file.originalname));
     cb(null, req.decoded.username + ".jpg");
   },
-});
+}); 
 
 const fileFilter = (req, file, cb) => {
   if (file.mimetype == "image/jpeg" || ile.mimetype == "image/png") {
